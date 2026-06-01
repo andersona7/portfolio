@@ -1,5 +1,5 @@
 /* ==========================================================================
-   ROOT VARIABLES & BASE SETUP
+   1. VARIABLES & RESET
    ========================================================================== */
 :root {
     --bg-dark: #0a0a0c;
@@ -24,16 +24,7 @@ body {
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
     cursor: default;
-    user-select: none;  
-    /* Restored native cursor for accuracy */
-}
-
-h1,
-h2,
-h3,
-.logo,
-.terminal-title {
-    font-family: 'Space Grotesk', sans-serif;
+    line-height: 1.6;
 }
 
 /* Ensure interactive elements show the standard pointer */
@@ -46,27 +37,29 @@ textarea,
 }
 
 /* ==========================================================================
-   LOADER & BACKGROUND EFFECTS
+   2. TYPOGRAPHY
    ========================================================================== */
-.loader-wrapper {
-    position: fixed;
-    inset: 0;
-    background: var(--bg-dark);
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 1s ease;
+h1,
+h2,
+h3,
+h4,
+.logo,
+.terminal-title,
+.gh-username {
+    font-family: 'Space Grotesk', sans-serif;
 }
 
-.loader-text {
-    font-family: 'Space Grotesk';
-    letter-spacing: 4px;
-    font-size: 0.9rem;
-    animation: pulse 1.5s infinite;
-    color: var(--accent-primary);
+.section-title {
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    margin-bottom: 3rem;
+    background: linear-gradient(to right, #fff, #888);
+    -webkit-background-clip: text;
+    color: transparent;
 }
 
+/* ==========================================================================
+   3. BACKGROUND EFFECTS (Aurora & Particles)
+   ========================================================================== */
 .aurora-container {
     position: fixed;
     inset: 0;
@@ -108,7 +101,7 @@ textarea,
 }
 
 /* ==========================================================================
-   UTILITIES & GLASSMORPHISM
+   4. LAYOUT & GLASSMORPHISM
    ========================================================================== */
 .content-container {
     max-width: 1200px;
@@ -120,32 +113,24 @@ textarea,
     padding: 8rem 0;
 }
 
-.section-title {
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
-    background: linear-gradient(to right, #fff, #888);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
 .glass-card,
 .glass-nav {
     background: var(--glass-bg);
     backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    /* Safari support */
     border: 1px solid var(--glass-border);
     border-radius: 16px;
     transition: all 0.2s cubic-bezier(0.2, 1, 0.3, 1);
-    /* Sharp transitions */
     position: relative;
 }
 
 /* ==========================================================================
-   NAVIGATION
+   5. NAVIGATION
    ========================================================================== */
 .glass-nav {
     position: fixed;
-    top: 1rem;
+    top: 1.5rem;
     left: 50%;
     transform: translateX(-50%);
     width: 90%;
@@ -161,18 +146,26 @@ textarea,
 .logo {
     font-size: 1.2rem;
     font-weight: 700;
+    text-decoration: none;
+    color: white;
 }
 
 .logo span {
     color: var(--accent-primary);
 }
 
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
 .nav-links a {
     color: var(--text-muted);
     text-decoration: none;
-    margin-left: 1.5rem;
     transition: color 0.3s;
     font-size: 0.9rem;
+    font-weight: 500;
 }
 
 .nav-links a:hover {
@@ -187,7 +180,7 @@ textarea,
 }
 
 /* ==========================================================================
-   HERO SECTION
+   6. HERO SECTION
    ========================================================================== */
 .hero {
     height: 100vh;
@@ -203,10 +196,12 @@ textarea,
     font-family: 'Space Grotesk';
     letter-spacing: 2px;
     margin-bottom: 1rem;
+    text-transform: uppercase;
+    font-size: 0.9rem;
 }
 
 .hero-title {
-    font-size: clamp(3rem, 6vw, 5rem);
+    font-size: clamp(2.5rem, 6vw, 5rem);
     line-height: 1.1;
     margin-bottom: 1.5rem;
 }
@@ -214,8 +209,7 @@ textarea,
 .gradient-text {
     background: linear-gradient(90deg, #fff, var(--accent-primary));
     -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: transparent;
 }
 
 .hero-desc {
@@ -226,15 +220,22 @@ textarea,
     line-height: 1.6;
 }
 
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
 .btn {
     padding: 0.8rem 2rem;
     border-radius: 8px;
     text-decoration: none;
     font-weight: 500;
-    display: inline-block;
-    margin: 0 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
     transition: all 0.2s cubic-bezier(0.2, 1, 0.3, 1);
-    position: relative;
 }
 
 .btn-primary {
@@ -257,9 +258,7 @@ textarea,
     transform: translateY(-2px);
 }
 
-/* ==========================================================================
-   SCROLL INDICATOR (Premium Glassmorphic Design)
-   ========================================================================== */
+/* Scroll Indicator */
 .scroll-indicator {
     position: absolute;
     bottom: 2.5rem;
@@ -279,7 +278,7 @@ textarea,
     text-transform: uppercase;
     letter-spacing: 3px;
     color: var(--text-muted);
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Space Grotesk';
 }
 
 .mouse {
@@ -289,7 +288,6 @@ textarea,
     border-radius: 20px;
     background: rgba(255, 255, 255, 0.02);
     backdrop-filter: blur(8px);
-    position: relative;
     display: flex;
     justify-content: center;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), inset 0 0 10px rgba(255, 255, 255, 0.03);
@@ -306,7 +304,7 @@ textarea,
 }
 
 /* ==========================================================================
-   SECTIONS: TIMELINE, SKILLS, PROJECTS
+   7. TIMELINE & ABOUT
    ========================================================================== */
 .timeline {
     display: flex;
@@ -325,6 +323,7 @@ textarea,
 .timeline-item:hover {
     transform: translateX(10px);
     background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.15);
 }
 
 .timeline-item::before {
@@ -337,6 +336,12 @@ textarea,
     background: var(--text-muted);
     border-radius: 50%;
     border: 4px solid var(--bg-dark);
+    transition: background 0.3s;
+}
+
+.timeline-item:hover::before {
+    background: var(--accent-primary);
+    box-shadow: 0 0 10px var(--accent-glow);
 }
 
 .highlight-card {
@@ -355,6 +360,9 @@ textarea,
     font-family: 'Space Grotesk';
 }
 
+/* ==========================================================================
+   8. TECH STACK
+   ========================================================================== */
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -404,17 +412,21 @@ textarea,
     border-color: var(--accent-primary);
 }
 
+/* ==========================================================================
+   9. PROJECTS
+   ========================================================================== */
 .project-card {
     display: flex;
     gap: 3rem;
-    padding: 2rem;
-    margin-bottom: 2rem;
+    padding: 2.5rem;
+    margin-bottom: 3rem;
     align-items: center;
 }
 
 .project-card:hover {
     border-color: rgba(255, 255, 255, 0.15);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    transform: translateY(-5px);
 }
 
 .project-card.reverse {
@@ -427,11 +439,12 @@ textarea,
 
 .project-image {
     flex: 1;
-    height: 300px;
+    min-height: 350px;
     background-size: cover;
     background-position: center;
     border-radius: 12px;
     border: 1px solid var(--glass-border);
+    width: 100%;
 }
 
 .project-badge {
@@ -441,6 +454,7 @@ textarea,
     color: var(--accent-primary);
     margin-bottom: 1rem;
     display: inline-block;
+    font-weight: 600;
 }
 
 .project-info h3 {
@@ -451,7 +465,7 @@ textarea,
 .project-info p {
     color: var(--text-muted);
     margin-bottom: 1.5rem;
-    line-height: 1.6;
+    font-size: 1.05rem;
 }
 
 .project-tech {
@@ -461,6 +475,7 @@ textarea,
     font-family: 'Space Grotesk';
     font-size: 0.9rem;
     color: #aaa;
+    flex-wrap: wrap;
 }
 
 .project-links a {
@@ -468,37 +483,56 @@ textarea,
     text-decoration: none;
     margin-right: 1.5rem;
     transition: color 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .project-links a:hover {
     color: var(--accent-primary);
 }
 
-
 /* ==========================================================================
-   GITHUB DASHBOARD STYLES
+   10. CERTIFICATIONS & GITHUB DASHBOARD
    ========================================================================== */
+.split-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
 
+.cert-card {
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.cert-card h4 {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.cert-card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* GitHub specific styles */
 .github-dashboard {
     display: flex;
     flex-direction: column;
+    gap: 1.5rem;
 }
 
-/* Profile Stats Card */
 .gh-profile {
-    margin-bottom: 1rem;
     padding: 1.5rem;
-    transition: transform 0.2s cubic-bezier(0.2, 1, 0.3, 1);
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
 }
 
 .gh-profile:hover {
     border-color: rgba(255, 255, 255, 0.15);
-}
-
-.gh-header {
-    display: flex;
-    align-items: center;
-    gap: 1.2rem;
 }
 
 .gh-avatar {
@@ -510,13 +544,12 @@ textarea,
 }
 
 .gh-username {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.2rem;
     color: var(--text-main);
     text-decoration: none;
     font-weight: 600;
     display: block;
     margin-bottom: 0.3rem;
+    font-size: 1.2rem;
 }
 
 .gh-username:hover {
@@ -532,13 +565,11 @@ textarea,
 
 .gh-stats strong {
     color: var(--text-main);
-    font-weight: 500;
 }
 
-/* Activity Feed Card */
 .gh-activity-feed {
     padding: 1.5rem;
-    height: 12rem;
+    max-height: 380px;
     display: flex;
     flex-direction: column;
 }
@@ -558,7 +589,7 @@ textarea,
 .live-dot {
     width: 8px;
     height: 8px;
-    background-color: #27c93f; /* Terminal Green */
+    background-color: #27c93f;
     border-radius: 50%;
     box-shadow: 0 0 8px #27c93f;
     animation: blink 2s infinite;
@@ -574,13 +605,10 @@ textarea,
     gap: 1rem;
 }
 
-/* Custom Scrollbar for the feed */
 .activity-list::-webkit-scrollbar {
     width: 4px;
 }
-.activity-list::-webkit-scrollbar-track {
-    background: transparent;
-}
+
 .activity-list::-webkit-scrollbar-thumb {
     background: var(--glass-border);
     border-radius: 4px;
@@ -588,8 +616,7 @@ textarea,
 
 .activity-item {
     font-size: 0.85rem;
-    line-height: 1.5;
-    color: #a9b7c6; /* Terminal text color */
+    color: #a9b7c6;
     display: flex;
     gap: 0.8rem;
     align-items: flex-start;
@@ -609,60 +636,24 @@ textarea,
 }
 
 .repo-name {
-    color: #61afef; /* Code highlight blue */
+    color: #61afef;
     font-weight: 500;
 }
 
 .commit-msg {
-    color: #98c379; /* String green */
+    color: #98c379;
 }
-
-/* Utilities */
-.skeleton-text {
-    opacity: 0.5;
-    animation: pulse 1.5s infinite;
-}
-
-@keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
-}
-
 
 /* ==========================================================================
-   AI VISION & TERMINAL
+   11. TERMINAL, AI VISION & CONTACT
    ========================================================================== */
-.ai-vision {
-    position: relative;
-}
-
-.vision-text {
-    font-size: 1.5rem;
+.ai-vision .vision-text {
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
     line-height: 1.8;
     max-width: 800px;
     margin: 0 auto;
     color: var(--text-muted);
-}
-
-.split-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: start;
-}
-
-.cert-card {
-    padding: 1.5rem;
-    margin-bottom: 1rem;
-}
-
-.cert-card h4 {
-    margin-bottom: 0.5rem;
-}
-
-.cert-card p {
-    color: var(--text-muted);
-    font-size: 0.9rem;
+    text-align: center;
 }
 
 .terminal-window {
@@ -735,13 +726,11 @@ textarea,
     color: #61afef;
 }
 
-/* ==========================================================================
-   CONTACT & FOOTER
-   ========================================================================== */
 .social-links {
     display: flex;
     justify-content: center;
     gap: 1.5rem;
+    flex-wrap: wrap;
 }
 
 .social-card {
@@ -767,11 +756,10 @@ footer {
     color: var(--text-muted);
     font-size: 0.9rem;
     border-top: 1px solid var(--glass-border);
+    margin-top: 4rem;
 }
 
-/* ==========================================================================
-   ANIMATIONS & MEDIA QUERIES
-   ========================================================================== */
+/* Animations */
 @keyframes pulse {
 
     0%,
@@ -816,30 +804,140 @@ footer {
     }
 }
 
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+}
+
+
+/* ==========================================================================
+   12. RESPONSIVE DESIGN (Media Queries)
+   ========================================================================== */
+
+/* Tablets (Max-width: 1024px) */
+@media (max-width: 1024px) {
+    .content-container {
+        padding: 0 1.5rem;
+    }
+
+    .section-pad {
+        padding: 6rem 0;
+    }
+
+    .project-card {
+        gap: 2rem;
+        padding: 2rem;
+    }
+
+    .split-grid {
+        gap: 2rem;
+    }
+}
+
+/* Mobile Phones (Max-width: 768px) */
 @media (max-width: 768px) {
+    .section-pad {
+        padding: 4rem 0;
+    }
+
+    /* Navigation: Hide links on mobile, keep logo */
     .glass-nav {
         width: 95%;
-        padding: 1rem;
+        padding: 0.8rem 1.5rem;
+        border-radius: 12px;
     }
 
     .nav-links {
         display: none;
     }
 
-    .project-card,
-    .project-card.reverse {
-        flex-direction: column;
+    /* Hero: Adjust spacing and button layout */
+    .hero-desc {
+        font-size: 1rem;
+        padding: 0 1rem;
     }
 
-    .project-image {
+    .hero-actions {
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .btn {
+        margin: 0;
+        justify-content: center;
         width: 100%;
     }
 
-    .split-grid {
-        grid-template-columns: 1fr;
+    /* Projects: Stack image and text */
+    .project-card,
+    .project-card.reverse {
+        flex-direction: column-reverse;
+        padding: 1.5rem;
+        gap: 1.5rem;
     }
 
-    .hero-title {
-        font-size: 2.5rem;
+    .project-image {
+        min-height: 250px;
+    }
+
+    /* Split Grid: Stack Certifications and GitHub Dashboard */
+    .split-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    /* Timeline: Reduce padding */
+    .timeline {
+        padding-left: 1.5rem;
+        margin-left: 0.5rem;
+    }
+
+    .timeline-item::before {
+        left: -2.1rem;
+    }
+
+    /* Social Cards */
+    .social-links {
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    /* Terminal */
+    .terminal-body {
+        height: 250px;
+    }
+}
+
+/* Small Mobile Phones (Max-width: 480px) */
+@media (max-width: 480px) {
+    .project-links {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .project-links a {
+        margin-right: 0;
+    }
+
+    .gh-profile {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .gh-stats {
+        justify-content: center;
     }
 }
