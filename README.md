@@ -1,4 +1,4 @@
-# ✦ Anderson Portfolio
+# Anderson Portfolio
 
 [![Live Demo](https://img.shields.io/badge/Live_Preview-View_Portfolio-5e6ad2?style=for-the-badge)](https://andersona7.github.io/portfolio/)
 [![GitHub License](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
