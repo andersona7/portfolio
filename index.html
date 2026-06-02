@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body oncontextmenu="return false;">
     
     <div class="loader-wrapper">
         <div class="loader-text">INITIALIZING ANDERSON PORTFOLIO...</div>
@@ -32,7 +32,8 @@
     <div id="particles-js"></div>
 
     <nav class="glass-nav">
-        <div class="logo">Anderson</div>
+        <div class="desktop-only">Anderson</div>
+        <div class="mobile-only">Anderson's Portfolio</div>
         <div class="nav-links">
             <a href="#about">About</a>
             <a href="#skills">Tech Stack</a>
@@ -44,22 +45,36 @@
 
     <header class="hero" id="home">
         <div class="hero-content content-container">
-            <p class="hero-greeting fade-up">Hi, I'm Anderson</p>
-            <h1 class="hero-title fade-up">Full Stack Developer Building <br> <span
-                    class="gradient-text type-wrap">Intelligent Web Applications</span></h1>
-            <p class="hero-desc fade-up">Computer Science Engineering student passionate about modern web technologies,
-                scalable software systems, and AI-powered solutions.</p>
-            <div class="hero-actions fade-up">
-                <a href="#projects" class="btn btn-primary">View Projects</a>
-                <a href="assets/Resume.pdf" download="Anderson_A_Resume.pdf" class="btn btn-secondary">Download
-                    Resume</a>
+            
+            <div class="hero-text">
+                <p class="hero-greeting fade-up">Hi, I'm Anderson</p>
+                <h1 class="hero-title fade-up">Full Stack Developer Building <br> <span class="gradient-text type-wrap">Intelligent Web Apps</span></h1>
+                <p class="hero-desc fade-up">Computer Science Engineering student passionate about modern web technologies, scalable software systems, and AI-powered solutions.</p>
+                <div class="hero-actions fade-up">
+                    <a href="#projects" class="btn btn-primary">View Projects</a>
+                    <a href="assets/Anderson_A_Resume.pdf" download="Anderson_A_Resume.pdf" class="btn btn-secondary">
+                        <i class="fa-solid fa-download"></i> Download Resume
+                    </a>
+                </div>
             </div>
+
+            <div class="hero-visual fade-up">
+                <div class="image-wrapper">
+                    <div class="image-glow"></div>
+                    
+                    <img src="assets/avathar.png" alt="Anderson A" class="profile-image">
+                    
+                    <div class="floating-badge glass-card">
+                        <span class="status-dot"></span> Available for work
+                    </div>
+                </div>
+            </div>
+
         </div>
+        
         <div class="scroll-indicator">
             <span class="scroll-text">Scroll to explore</span>
-            <div class="mouse">
-                <div class="wheel"></div>
-            </div>
+            <div class="mouse"><div class="wheel"></div></div>
         </div>
     </header>
 
@@ -206,7 +221,7 @@
             
             <div class="gh-profile glass-card">
                 <div class="gh-header">
-                    <img src="https://github.com/andersona7.png" alt="GitHub Avatar" class="gh-avatar" id="gh-avatar" onerror="this.style.display='none'">
+                    <img src="https://github.com/andersona7.png" alt="GitHub Avatar" draggable="false" class="gh-avatar" id="gh-avatar" onerror="this.style.display='none'">
                     <div>
                         <a href="https://github.com/andersona7" target="_blank" class="gh-username">Anderson A</a>
                         <div class="gh-stats" id="gh-stats">
@@ -257,6 +272,9 @@
                 <a href="mailto:anderson883858@gmail.com" target="_blank" class="social-card glass-card"><i class="fa-solid fa-envelope"></i> Email</a>
                 <a href="https://www.linkedin.com/in/anderson87" target="_blank" class="social-card glass-card"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
                 <a href="https://github.com/andersona7" target="_blank" class="social-card glass-card"><i class="fa-brands fa-github"></i> GitHub</a>
+                <a href="https://wa.me/+918838631758" target="_blank" class="social-card glass-card whatsapp-card">
+                <i class="fa-brands fa-whatsapp"></i> WhatsApp
+            </a>
             </div>
         </div>
     </section>
